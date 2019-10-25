@@ -72,7 +72,7 @@ export default class SwipeUpDown extends Component{
   }
 
   _onPanResponderMove(event, gestureState) {
-    if (gestureState.dy > 0 && !this.checkCollapsed) {
+    if (gestureState.dy > 20 && !this.checkCollapsed) {
       // SWIPE DOWN
 
       this.customStyle.style.top = this.top + gestureState.dy;
