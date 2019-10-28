@@ -2,7 +2,7 @@ declare module "react-native-swipe-up-down" {
   import * as React from "react";
 
   export interface SwipeUpProps {
-    hasRef?: () => void;
+    hasRef?: (any) => any;
     swipeHeight?: number;
     itemMini?: object;
     itemFull: object;

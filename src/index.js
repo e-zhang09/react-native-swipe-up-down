@@ -86,13 +86,13 @@ export default class SwipeUpDown extends Component{
       this.customStyle.style.top = DEVICE_HEIGHT + gestureState.dy;
       this.customStyle.style.height = -gestureState.dy + this.SWIPE_HEIGHT;
       this.swipeIconRef &&
-        this.swipeIconRef.setState({ icon: images.minus, showIcon: true });
+      this.swipeIconRef.setState({ icon: images.minus, showIcon: true });
       if (this.customStyle.style.top <= DEVICE_HEIGHT / 2) {
         this.swipeIconRef &&
-          this.swipeIconRef.setState({
-            icon: images.arrow_down,
-            showIcon: true
-          });
+        this.swipeIconRef.setState({
+          icon: images.arrow_down,
+          showIcon: true
+        });
       }
       this.updateNativeProps();
       this.state.collapsed && this.setState({ collapsed: false });
@@ -112,7 +112,7 @@ export default class SwipeUpDown extends Component{
     this.customStyle.style.top = 0;
     this.customStyle.style.height = DEVICE_HEIGHT;
     this.swipeIconRef &&
-      this.swipeIconRef.setState({ icon: images.arrow_down, showIcon: true });
+    this.swipeIconRef.setState({ icon: images.arrow_down, showIcon: true });
     this.updateNativeProps();
     this.state.collapsed && this.setState({ collapsed: false });
     this.checkCollapsed = false;
@@ -121,10 +121,10 @@ export default class SwipeUpDown extends Component{
 
   showMini() {
     const { onShowMini, itemMini } = this.props;
-    this.SWIPE_HEIGHT = 150; //Avoid hiding when swiping down.
+    this.SWIPE_HEIGHT = 120; //Avoid hiding when swiping down.
     this.customStyle.style.top = itemMini
-      ? DEVICE_HEIGHT - this.SWIPE_HEIGHT
-      : DEVICE_HEIGHT;
+        ? DEVICE_HEIGHT - this.SWIPE_HEIGHT
+        : DEVICE_HEIGHT;
     this.customStyle.style.height = itemMini ? this.SWIPE_HEIGHT : 0;
     this.swipeIconRef && this.swipeIconRef.setState({ showIcon: false });
     this.updateNativeProps();
@@ -137,37 +137,37 @@ export default class SwipeUpDown extends Component{
     const { itemMini, itemFull, style } = this.props;
     const { collapsed } = this.state;
     return (
-      <View
-        ref={ref => (this.viewRef = ref)}
-        {...this._panResponder.panHandlers}
-        style={[
-          styles.wrapSwipe,
-          {
-            height: this.SWIPE_HEIGHT,
-            marginTop: MARGIN_TOP
-          },
-          !itemMini && collapsed && { marginBottom: -200 },
-          style
-        ]}
-      >
-        <SwipeIcon
-          onClose={() => this.showMini()}
-          hasRef={ref => (this.swipeIconRef = ref)}
-        />
-        {collapsed ? (
-          itemMini ? (
-            <TouchableOpacity
-              activeOpacity={this.disablePressToShow ? 1 : 0.6}
-              style={{ height: this.SWIPE_HEIGHT }}
-              onPress={() => !this.disablePressToShow && this.showFull()}
-            >
-              {itemMini}
-            </TouchableOpacity>
-          ) : null
-        ) : (
-          itemFull
-        )}
-      </View>
+        <View
+            ref={ref => (this.viewRef = ref)}
+            {...this._panResponder.panHandlers}
+            style={[
+              styles.wrapSwipe,
+              {
+                height: this.SWIPE_HEIGHT,
+                marginTop: MARGIN_TOP
+              },
+              !itemMini && collapsed && { marginBottom: -200 },
+              style
+            ]}
+        >
+          <SwipeIcon
+              onClose={() => this.showMini()}
+              hasRef={ref => (this.swipeIconRef = ref)}
+          />
+          {collapsed ? (
+              itemMini ? (
+                  <TouchableOpacity
+                      activeOpacity={this.disablePressToShow ? 1 : 0.6}
+                      style={{ height: this.SWIPE_HEIGHT }}
+                      onPress={() => !this.disablePressToShow && this.showFull()}
+                  >
+                    {itemMini}
+                  </TouchableOpacity>
+              ) : null
+          ) : (
+              itemFull
+          )}
+        </View>
     );
   }
 }
