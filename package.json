@@ -19,6 +19,6 @@
   "author": "Duong Minh Chien <minhchienwikipedia@gmail.com> (https://github.com/minhchienwikipedia)",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": ">=0.41.2"
+    "react-native": "^0.41.2"
   }
 }
